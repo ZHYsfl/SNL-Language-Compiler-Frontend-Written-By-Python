@@ -1,0 +1,12 @@
+{错误4: fi 后缺少分号}
+program p
+var
+    integer x;
+begin
+    if x < 1 then
+        write(x)
+    else
+        write(x)
+    fi
+    read(x)
+end.

@@ -1,0 +1,14 @@
+{测试过程声明和调用的SNL程序}
+program proctest
+var
+    integer a, b, result;
+procedure add(integer x, y; var integer z);
+begin
+    z := x + y
+end;
+begin
+    read(a);
+    read(b);
+    add(a, b, result);
+    write(result)
+end.

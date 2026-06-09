@@ -1,0 +1,12 @@
+Type            Value                Line   Col   
+------------------------------------------------------------
+PROGRAM         program              2      1     
+ID              p                    2      9     
+VAR             var                  3      1     
+INTEGER         integer              4      5     
+ID              a                    4      13    
+;               ;                    4      14    
+BEGIN           begin                5      1     
+ID              a                    6      5     
+:=              :=                   6      7     
+INTC            1                    6      10    

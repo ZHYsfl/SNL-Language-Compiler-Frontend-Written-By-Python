@@ -1,0 +1,11 @@
+{错误3: if 条件后缺少 then}
+program p
+var
+    integer x;
+begin
+    if x < 1
+        write(x)
+    else
+        write(x)
+    fi
+end.

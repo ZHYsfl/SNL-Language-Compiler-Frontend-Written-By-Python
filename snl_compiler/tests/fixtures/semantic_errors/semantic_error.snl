@@ -1,0 +1,18 @@
+{包含多种语义错误的SNL程序}
+program errtest
+type
+    myint = integer;
+    myint = char;
+var
+    integer x, y;
+    char c;
+    myint m;
+begin
+    read(x);
+    read(unknown);
+    x := c + 1;
+    c := x;
+    y := x + c;
+    myint := 5;
+    write(x)
+end.

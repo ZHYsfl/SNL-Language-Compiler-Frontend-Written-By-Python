@@ -1,0 +1,301 @@
+Program
+  ProgramHead
+    PROGRAM: program
+    ID: test
+  DeclarePart
+    TypeDecPart
+      TypeDec
+        TYPE: type
+        TypeDecList
+          ID: t1
+          =: =
+          TypeDef
+            BaseType
+              INTEGER: integer
+          ;: ;
+          TypeDecList
+            ID: t2
+            =: =
+            TypeDef
+              BaseType
+                CHAR: char
+            ;: ;
+            TypeDecList
+              ID: arr
+              =: =
+              TypeDef
+                StructureType
+                  ArrayType
+                    ARRAY: array
+                    [: [
+                    INTC: 1
+                    ..: ..
+                    INTC: 10
+                    ]: ]
+                    OF: of
+                    BaseType
+                      INTEGER: integer
+              ;: ;
+              TypeDecList
+                ID: rec
+                =: =
+                TypeDef
+                  StructureType
+                    RecType
+                      RECORD: record
+                      FieldDecList
+                        BaseType
+                          INTEGER: integer
+                        IDList
+                          ID: name
+                        ;: ;
+                        FieldDecList
+                          BaseType
+                            CHAR: char
+                          IDList
+                            ID: grade
+                          ;: ;
+                      END: end
+                ;: ;
+    VarDecPart
+      VarDec
+        VAR: var
+        VarDecList
+          TypeDef
+            BaseType
+              INTEGER: integer
+          VarIDList
+            ID: i
+            VarIDMore
+              ,: ,
+              VarIDList
+                ID: j
+          ;: ;
+          VarDecList
+            TypeDef
+              BaseType
+                CHAR: char
+            VarIDList
+              ID: c
+            ;: ;
+            VarDecList
+              TypeDef
+                ID: t1
+              VarIDList
+                ID: x
+              ;: ;
+              VarDecList
+                TypeDef
+                  ID: arr
+                VarIDList
+                  ID: a
+                ;: ;
+                VarDecList
+                  TypeDef
+                    ID: rec
+                  VarIDList
+                    ID: r
+                  ;: ;
+  ProgramBody
+    BEGIN: begin
+    StmList
+      Stm
+        InputStm
+          READ: read
+          (: (
+          ID: i
+          ): )
+      StmMore
+        ;: ;
+        StmList
+          Stm
+            ID: j
+            AssignmentRest
+              :=: :=
+              Exp
+                Term
+                  Factor
+                    Variable
+                      ID: i
+                OtherTerm
+                  AddOp
+                    +: +
+                  Exp
+                    Term
+                      Factor
+                        INTC: 1
+          StmMore
+            ;: ;
+            StmList
+              Stm
+                ID: x
+                AssignmentRest
+                  :=: :=
+                  Exp
+                    Term
+                      Factor
+                        Variable
+                          ID: i
+                      OtherFactor
+                        MultOp
+                          *: *
+                        Term
+                          Factor
+                            Variable
+                              ID: j
+                    OtherTerm
+                      AddOp
+                        +: +
+                      Exp
+                        Term
+                          Factor
+                            INTC: 2
+              StmMore
+                ;: ;
+                StmList
+                  Stm
+                    ID: a
+                    AssignmentRest
+                      VariMore
+                        [: [
+                        Exp
+                          Term
+                            Factor
+                              INTC: 1
+                        ]: ]
+                      :=: :=
+                      Exp
+                        Term
+                          Factor
+                            Variable
+                              ID: x
+                  StmMore
+                    ;: ;
+                    StmList
+                      Stm
+                        ID: r
+                        AssignmentRest
+                          VariMore
+                            .: .
+                            FieldVar
+                              ID: name
+                          :=: :=
+                          Exp
+                            Term
+                              Factor
+                                Variable
+                                  ID: i
+                      StmMore
+                        ;: ;
+                        StmList
+                          Stm
+                            ID: r
+                            AssignmentRest
+                              VariMore
+                                .: .
+                                FieldVar
+                                  ID: grade
+                              :=: :=
+                              Exp
+                                Term
+                                  Factor
+                                    Variable
+                                      ID: c
+                          StmMore
+                            ;: ;
+                            StmList
+                              Stm
+                                ConditionalStm
+                                  IF: if
+                                  RelExp
+                                    Exp
+                                      Term
+                                        Factor
+                                          Variable
+                                            ID: i
+                                    OtherRelE
+                                      CmpOp
+                                        <: <
+                                      Exp
+                                        Term
+                                          Factor
+                                            Variable
+                                              ID: j
+                                  THEN: then
+                                  StmList
+                                    Stm
+                                      OutputStm
+                                        WRITE: write
+                                        (: (
+                                        Exp
+                                          Term
+                                            Factor
+                                              Variable
+                                                ID: i
+                                        ): )
+                                  ELSE: else
+                                  StmList
+                                    Stm
+                                      OutputStm
+                                        WRITE: write
+                                        (: (
+                                        Exp
+                                          Term
+                                            Factor
+                                              Variable
+                                                ID: j
+                                        ): )
+                                  FI: fi
+                              StmMore
+                                ;: ;
+                                StmList
+                                  Stm
+                                    LoopStm
+                                      WHILE: while
+                                      RelExp
+                                        Exp
+                                          Term
+                                            Factor
+                                              Variable
+                                                ID: i
+                                        OtherRelE
+                                          CmpOp
+                                            <: <
+                                          Exp
+                                            Term
+                                              Factor
+                                                INTC: 10
+                                      DO: do
+                                      StmList
+                                        Stm
+                                          ID: i
+                                          AssignmentRest
+                                            :=: :=
+                                            Exp
+                                              Term
+                                                Factor
+                                                  Variable
+                                                    ID: i
+                                              OtherTerm
+                                                AddOp
+                                                  +: +
+                                                Exp
+                                                  Term
+                                                    Factor
+                                                      INTC: 1
+                                      ENDWH: endwh
+                                  StmMore
+                                    ;: ;
+                                    StmList
+                                      Stm
+                                        OutputStm
+                                          WRITE: write
+                                          (: (
+                                          Exp
+                                            Term
+                                              Factor
+                                                Variable
+                                                  ID: x
+                                          ): )
+    END: end
+  .: .

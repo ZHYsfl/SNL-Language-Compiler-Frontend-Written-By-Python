@@ -1,0 +1,3 @@
+Line 11, col 5: 期望 END, 实际为 READ
+Line 11, col 5: 期望 ., 实际为 READ
+Line 11, col 5: 程序结束后仍有多余内容

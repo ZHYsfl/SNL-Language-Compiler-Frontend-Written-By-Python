@@ -1,0 +1,33 @@
+{正确的SNL程序 - 无语义错误}
+program test
+type
+    t1 = integer;
+    t2 = char;
+    arr = array [1..10] of integer;
+    rec = record
+        integer name;
+        char grade;
+    end;
+var
+    integer i, j;
+    char c;
+    t1 x;
+    arr a;
+    rec r;
+begin
+    read(i);
+    j := i + 1;
+    x := i * j + 2;
+    a[1] := x;
+    r.name := i;
+    r.grade := c;
+    if i < j then
+        write(i)
+    else
+        write(j)
+    fi;
+    while i < 10 do
+        i := i + 1
+    endwh;
+    write(x)
+end.

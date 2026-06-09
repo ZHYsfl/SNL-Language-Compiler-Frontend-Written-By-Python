@@ -1,0 +1,42 @@
+{综合测试 - 覆盖全部13个语义错误}
+program allerrors
+type
+    myint = integer;
+    myint = char;           {错误1: 类型重复定义}
+    arr = array [1..5] of integer;
+    rec = record
+        integer id;
+        char name;
+    end;
+var
+    integer x, y;
+    char c;
+    arr a;
+    rec r;
+procedure foo(integer p);
+begin
+    p := p + 1
+end;
+begin
+    read(x);
+    read(notexist);         {错误2: 未声明变量}
+    x := c;                 {错误3: 赋值类型不相容}
+    c := x + 1;             {错误4: 赋值类型不相容}
+    y := x + c;             {错误5: 运算类型不相容 + 赋值连锁报错}
+    myint := 10;            {错误6: 不是变量标识符}
+    a[1] := x;
+    a[c] := x;              {错误7: 数组下标非整数}
+    x[1] := 5;              {错误8: 不是数组类型 + 赋值连锁报错}
+    r.id := x;
+    r.zzz := 1;             {错误9: 记录域不存在 + 赋值连锁报错}
+    r.name[1] := 1;         {错误10: 记录域不是数组类型}
+    foo(x);
+    foo(x, y);              {错误11: 参数个数不匹配}
+    x(1);                   {错误12: 不是过程标识符}
+    if x < c then           {错误13: 比较类型不相容}
+        write(x)
+    else
+        write(y)
+    fi;
+    write(x)
+end.

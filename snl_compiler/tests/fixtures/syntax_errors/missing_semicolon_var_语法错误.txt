@@ -1,0 +1,1 @@
+Line 5, col 5: 期望 ;, 实际为 INTEGER

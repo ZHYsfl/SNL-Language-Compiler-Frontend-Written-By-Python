@@ -1,0 +1,7 @@
+{错误6: 程序结束缺少 .}
+program p
+var
+    integer x;
+begin
+    read(x)
+end

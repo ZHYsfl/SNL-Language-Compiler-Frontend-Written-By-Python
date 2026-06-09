@@ -1,0 +1,61 @@
+Program
+  ProgramHead
+    PROGRAM: program
+    ID: p
+  DeclarePart
+    VarDecPart
+      VarDec
+        VAR: var
+        VarDecList
+          TypeDef
+            BaseType
+              INTEGER: integer
+          VarIDList
+            ID: x
+          ;: ;
+  ProgramBody
+    BEGIN: begin
+    StmList
+      Stm
+        ConditionalStm
+          IF: if
+          RelExp
+            Exp
+              Term
+                Factor
+                  Variable
+                    ID: x
+            OtherRelE
+              CmpOp
+                <: <
+              Exp
+                Term
+                  Factor
+                    INTC: 1
+          THEN: then
+          StmList
+            Stm
+              OutputStm
+                WRITE: write
+                (: (
+                Exp
+                  Term
+                    Factor
+                      Variable
+                        ID: x
+                ): )
+          ELSE: else
+          StmList
+            Stm
+              OutputStm
+                WRITE: write
+                (: (
+                Exp
+                  Term
+                    Factor
+                      Variable
+                        ID: x
+                ): )
+          FI: fi
+    END: read
+  .: read

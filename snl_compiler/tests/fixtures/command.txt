@@ -1,0 +1,47 @@
+cd D:/university/编译器/snl_compiler
+
+# 正常程序
+uv run python -m snl_compiler tests/fixtures/normal/correct_basic.snl --semantic
+uv run python -m snl_compiler tests/fixtures/normal/correct_proc.snl --semantic
+
+# 词法错误（每个文件一种错误）
+uv run python -m snl_compiler tests/fixtures/lexical_errors/illegal_char_at.snl --semantic
+uv run python -m snl_compiler tests/fixtures/lexical_errors/illegal_char_hash.snl --semantic
+uv run python -m snl_compiler tests/fixtures/lexical_errors/illegal_char_exclaim.snl --semantic
+uv run python -m snl_compiler tests/fixtures/lexical_errors/illegal_char_percent.snl --semantic
+uv run python -m snl_compiler tests/fixtures/lexical_errors/unclosed_comment.snl --semantic
+
+# 语法错误（每个文件一种错误）
+uv run python -m snl_compiler tests/fixtures/syntax_errors/missing_semicolon_var.snl --semantic
+uv run python -m snl_compiler tests/fixtures/syntax_errors/missing_semicolon_stm.snl --semantic
+uv run python -m snl_compiler tests/fixtures/syntax_errors/missing_then.snl --semantic
+uv run python -m snl_compiler tests/fixtures/syntax_errors/missing_semicolon_fi.snl --semantic
+uv run python -m snl_compiler tests/fixtures/syntax_errors/missing_endwh.snl --semantic
+uv run python -m snl_compiler tests/fixtures/syntax_errors/missing_dot.snl --semantic
+
+# 语义错误
+uv run python -m snl_compiler tests/fixtures/semantic_errors/semantic_all_errors.snl --semantic
+uv run python -m snl_compiler tests/fixtures/semantic_errors/semantic_error.snl --semantic
+
+最终 fixtures 目录（全部单文件单错误）
+
+tests/fixtures/
+├── normal/
+│   ├── correct_basic.snl
+│   └── correct_proc.snl
+├── lexical_errors/
+│   ├── illegal_char_at.snl        {@}
+│   ├── illegal_char_hash.snl      {#}
+│   ├── illegal_char_exclaim.snl   {!}
+│   ├── illegal_char_percent.snl   {%}
+│   └── unclosed_comment.snl
+├── syntax_errors/
+│   ├── missing_semicolon_var.snl  {变量声明后缺;}
+│   ├── missing_semicolon_stm.snl  {赋值语句后缺;}
+│   ├── missing_then.snl           {if 后缺 then}
+│   ├── missing_semicolon_fi.snl   {fi 后缺;}
+│   ├── missing_endwh.snl          {while 缺 endwh}
+│   └── missing_dot.snl            {程序结束缺 .}
+└── semantic_errors/
+    ├── semantic_all_errors.snl
+    └── semantic_error.snl

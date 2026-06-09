@@ -1,0 +1,36 @@
+[project]
+name = "snl-compiler"
+version = "0.1.0"
+description = "SNL compiler: lexical, syntax, and semantic analysis"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+pythonpath = ["src"]
+addopts = "--cov=snl_compiler --cov-report=term-missing --cov-fail-under=94"
+
+[tool.coverage.run]
+source = ["snl_compiler"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/snl_compiler"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

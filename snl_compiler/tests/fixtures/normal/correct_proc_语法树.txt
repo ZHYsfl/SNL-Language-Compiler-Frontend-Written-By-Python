@@ -1,0 +1,138 @@
+Program
+  ProgramHead
+    PROGRAM: program
+    ID: proctest
+  DeclarePart
+    VarDecPart
+      VarDec
+        VAR: var
+        VarDecList
+          TypeDef
+            BaseType
+              INTEGER: integer
+          VarIDList
+            ID: a
+            VarIDMore
+              ,: ,
+              VarIDList
+                ID: b
+                VarIDMore
+                  ,: ,
+                  VarIDList
+                    ID: result
+          ;: ;
+    ProcDecpart
+      ProcDec
+        PROCEDURE: procedure
+        ID: add
+        (: (
+        ParamList
+          ParamDecList
+            Param
+              TypeDef
+                BaseType
+                  INTEGER: integer
+              FormList
+                ID: x
+                FidMore
+                  ,: ,
+                  FormList
+                    ID: y
+            ParamMore
+              ;: ;
+              ParamDecList
+                Param
+                  VAR: var
+                  TypeDef
+                    BaseType
+                      INTEGER: integer
+                  FormList
+                    ID: z
+        ): )
+        ;: ;
+        DeclarePart
+        ProcBody
+          ProgramBody
+            BEGIN: begin
+            StmList
+              Stm
+                ID: z
+                AssignmentRest
+                  :=: :=
+                  Exp
+                    Term
+                      Factor
+                        Variable
+                          ID: x
+                    OtherTerm
+                      AddOp
+                        +: +
+                      Exp
+                        Term
+                          Factor
+                            Variable
+                              ID: y
+            END: end
+  ProgramBody
+    BEGIN: begin
+    StmList
+      Stm
+        InputStm
+          READ: read
+          (: (
+          ID: a
+          ): )
+      StmMore
+        ;: ;
+        StmList
+          Stm
+            InputStm
+              READ: read
+              (: (
+              ID: b
+              ): )
+          StmMore
+            ;: ;
+            StmList
+              Stm
+                ID: add
+                CallStmRest
+                  (: (
+                  ActParamList
+                    Exp
+                      Term
+                        Factor
+                          Variable
+                            ID: a
+                    ActParamMore
+                      ,: ,
+                      ActParamList
+                        Exp
+                          Term
+                            Factor
+                              Variable
+                                ID: b
+                        ActParamMore
+                          ,: ,
+                          ActParamList
+                            Exp
+                              Term
+                                Factor
+                                  Variable
+                                    ID: result
+                  ): )
+              StmMore
+                ;: ;
+                StmList
+                  Stm
+                    OutputStm
+                      WRITE: write
+                      (: (
+                      Exp
+                        Term
+                          Factor
+                            Variable
+                              ID: result
+                      ): )
+    END: end
+  .: .

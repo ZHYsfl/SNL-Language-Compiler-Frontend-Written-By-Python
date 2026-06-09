@@ -1,0 +1,8 @@
+{错误2: 赋值语句后缺少分号}
+program p
+var
+    integer x;
+begin
+    x := 1
+    read(x)
+end.

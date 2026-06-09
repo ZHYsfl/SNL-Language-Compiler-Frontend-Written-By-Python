@@ -1,0 +1,144 @@
+Program
+  ProgramHead
+    PROGRAM: program
+    ID: errtest
+  DeclarePart
+    TypeDecPart
+      TypeDec
+        TYPE: type
+        TypeDecList
+          ID: myint
+          =: =
+          TypeDef
+            BaseType
+              INTEGER: integer
+          ;: ;
+          TypeDecList
+            ID: myint
+            =: =
+            TypeDef
+              BaseType
+                CHAR: char
+            ;: ;
+    VarDecPart
+      VarDec
+        VAR: var
+        VarDecList
+          TypeDef
+            BaseType
+              INTEGER: integer
+          VarIDList
+            ID: x
+            VarIDMore
+              ,: ,
+              VarIDList
+                ID: y
+          ;: ;
+          VarDecList
+            TypeDef
+              BaseType
+                CHAR: char
+            VarIDList
+              ID: c
+            ;: ;
+            VarDecList
+              TypeDef
+                ID: myint
+              VarIDList
+                ID: m
+              ;: ;
+  ProgramBody
+    BEGIN: begin
+    StmList
+      Stm
+        InputStm
+          READ: read
+          (: (
+          ID: x
+          ): )
+      StmMore
+        ;: ;
+        StmList
+          Stm
+            InputStm
+              READ: read
+              (: (
+              ID: unknown
+              ): )
+          StmMore
+            ;: ;
+            StmList
+              Stm
+                ID: x
+                AssignmentRest
+                  :=: :=
+                  Exp
+                    Term
+                      Factor
+                        Variable
+                          ID: c
+                    OtherTerm
+                      AddOp
+                        +: +
+                      Exp
+                        Term
+                          Factor
+                            INTC: 1
+              StmMore
+                ;: ;
+                StmList
+                  Stm
+                    ID: c
+                    AssignmentRest
+                      :=: :=
+                      Exp
+                        Term
+                          Factor
+                            Variable
+                              ID: x
+                  StmMore
+                    ;: ;
+                    StmList
+                      Stm
+                        ID: y
+                        AssignmentRest
+                          :=: :=
+                          Exp
+                            Term
+                              Factor
+                                Variable
+                                  ID: x
+                            OtherTerm
+                              AddOp
+                                +: +
+                              Exp
+                                Term
+                                  Factor
+                                    Variable
+                                      ID: c
+                      StmMore
+                        ;: ;
+                        StmList
+                          Stm
+                            ID: myint
+                            AssignmentRest
+                              :=: :=
+                              Exp
+                                Term
+                                  Factor
+                                    INTC: 5
+                          StmMore
+                            ;: ;
+                            StmList
+                              Stm
+                                OutputStm
+                                  WRITE: write
+                                  (: (
+                                  Exp
+                                    Term
+                                      Factor
+                                        Variable
+                                          ID: x
+                                  ): )
+    END: end
+  .: .

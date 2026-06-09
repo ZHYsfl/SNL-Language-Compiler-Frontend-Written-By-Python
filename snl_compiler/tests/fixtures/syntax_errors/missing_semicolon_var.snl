@@ -1,0 +1,8 @@
+{错误1: 变量声明后缺少分号}
+program p
+var
+    integer x
+    integer y;
+begin
+    read(x)
+end.

@@ -1,0 +1,16 @@
+/.specstory/
+
+
+.cursorindexingignore
+
+题目说明.md
+
+image*.png
+
+李*
+齐*
+snl_semantic_unzipped/
+
+*.ppt
+
+实验报告.md

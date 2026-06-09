@@ -1,0 +1,26 @@
+Program
+  ProgramHead
+    PROGRAM: program
+    ID: p
+  DeclarePart
+    VarDecPart
+      VarDec
+        VAR: var
+        VarDecList
+          TypeDef
+            BaseType
+              INTEGER: integer
+          VarIDList
+            ID: x
+          ;: ;
+  ProgramBody
+    BEGIN: begin
+    StmList
+      Stm
+        InputStm
+          READ: read
+          (: (
+          ID: x
+          ): )
+    END: end
+  .: EOF

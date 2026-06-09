@@ -1,0 +1,9 @@
+{错误5: 未闭合注释}
+program p
+var
+    integer a;
+{ 这是一个未闭合的注释
+begin
+    a := 1;
+    read(a)
+end.
